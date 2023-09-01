@@ -50,7 +50,7 @@ const LogIn = forwardRef((_props, ref: any) => {
       ref.current?.reset();
 
       try {
-        const data = await logIn({ ...value, recapToken: "" }).unwrap();
+        const data = await logIn({ ...value, recapToken }).unwrap();
 
         const userData = { ...data, isAuth: true };
 
