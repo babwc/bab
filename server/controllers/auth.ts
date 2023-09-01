@@ -151,8 +151,6 @@ export const register = async (req: Request, res: Response) => {
 
     return res.status(200).json("Account has been successfully created");
   } catch (error) {
-    console.log(error);
-
     return res.status(500).json({ error });
   }
 };

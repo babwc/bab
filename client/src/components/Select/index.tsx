@@ -35,8 +35,6 @@ const Select = <T,>({
   children,
 }: Props<T>) => {
   const [listOpen, setListOpen] = useState<boolean>(false);
-  console.log("options.list.length", options.list.length);
-  console.log("litop");
 
   return (
     <div className="select">

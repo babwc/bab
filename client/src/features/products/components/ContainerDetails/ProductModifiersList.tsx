@@ -2,8 +2,11 @@ import ReactDOM from "react-dom";
 
 import { motion } from "framer-motion";
 
+import { useGetSomeProductsQuery } from "../../../../api/services/products";
+
 import ItemDetails from "../../shared/ProductDetails";
 import Close from "../../../../components/Close";
+import Loading from "../../../../components/Loading";
 
 import useFreezeBackground from "../../../../hooks/useFreezeBackground";
 
@@ -12,13 +15,19 @@ import "./ProductModifiersList.scss";
 import { IProduct } from "../../../../ts/interfaces";
 
 const ProductModifiersList = ({
-  products,
+  productId,
   handleList,
 }: {
-  products: IProduct[];
+  productId: string;
   handleList: () => void;
 }) => {
   useFreezeBackground();
+
+  const { data: products, isLoading } = useGetSomeProductsQuery(productId);
+
+  if (isLoading) {
+    return <Loading pageLoading={true} />;
+  }
 
   const content = (
     <motion.div
@@ -46,7 +55,7 @@ const ProductModifiersList = ({
         <Close />
       </div>
       <div className="modifiers__list__body">
-        {products.map((product: any) => {
+        {products?.map((product: any) => {
           return <ItemDetails key={product._id} product={product} />;
         })}
       </div>

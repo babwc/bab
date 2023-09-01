@@ -30,7 +30,7 @@ const ContainerDetails = ({
         <AnimatePresence>
           {listOpen && (
             <ProductModifiersList
-              products={product.modifiers as IProduct[]}
+              productId={product._id}
               handleList={handleList}
             />
           )}

@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import mongoose, { Types } from "mongoose";
 
-import fs from "fs";
+import crypto from "crypto";
 
 import ShortUniqueId from "short-unique-id";
 
@@ -11,6 +11,8 @@ import User from "../model/User";
 import { TypedRequestParams } from "../ts/interfaces";
 
 import { IProduct } from "../model/Product";
+
+import { addImage, deleteImgS3, getImgUrl } from "../utils/s3";
 
 interface GetAll {
   searchValue: string;
@@ -38,7 +40,16 @@ export const all = async (req: TypedRequestParams<GetAll>, res: Response) => {
       .populate("modifiers")
       .select("-updatedAt -createdAt")
       .limit(limit)
-      .skip((currentPage - 1) * limit);
+      .skip((currentPage - 1) * limit)
+      .lean();
+
+    for (const product of products) {
+      if (product.image) {
+        const imageUrl = await getImgUrl(product.image);
+
+        product.imageUrl = imageUrl;
+      }
+    }
 
     return res.status(200).json({ products, total });
   } catch (error) {
@@ -72,7 +83,15 @@ export const search = async (req: Request, res: Response) => {
 
     if (department) options.department = department;
 
-    const products = await Product.find(options);
+    const products = await Product.find(options).lean();
+
+    for (const product of products) {
+      if (product.image) {
+        const imageUrl = await getImgUrl(product.image);
+
+        product.imageUrl = imageUrl;
+      }
+    }
 
     return res.status(200).json(products);
   } catch (error) {
@@ -84,7 +103,15 @@ export const some = async (req: Request, res: Response) => {
   try {
     const { _id } = req.body;
 
-    const products = await Product.find({ parent: _id });
+    const products = await Product.find({ parent: _id }).lean();
+
+    for (const product of products) {
+      if (product.image) {
+        const imageUrl = await getImgUrl(product.image);
+
+        product.imageUrl = imageUrl;
+      }
+    }
 
     return res.status(200).json(products);
   } catch (error) {
@@ -100,7 +127,15 @@ export const many = async (req: Request, res: Response) => {
       _id: {
         $in: ids,
       },
-    });
+    }).lean();
+
+    for (const product of products) {
+      if (product.image) {
+        const imageUrl = await getImgUrl(product.image);
+
+        product.imageUrl = imageUrl;
+      }
+    }
 
     return res.status(200).json(products);
   } catch (error) {
@@ -112,7 +147,15 @@ export const one = async (req: Request, res: Response) => {
   try {
     const { uid } = req.query;
 
-    const product = await Product.findOne({ uid }).populate("parent");
+    const product = await Product.findOne({ uid }).populate("parent").lean();
+
+    if (!product) return res.status(400).json("Product doesn't exist");
+
+    if (product.image) {
+      const imageUrl = await getImgUrl(product.image);
+
+      product.imageUrl = imageUrl;
+    }
 
     return res.status(200).json(product);
   } catch (error) {
@@ -154,12 +197,18 @@ export const add = async (req: Request, res: Response) => {
 
     const uid = new ShortUniqueId({ length: 10 });
 
+    const imgName = crypto.randomBytes(32).toString("hex");
+
+    if (req.file) {
+      await addImage(imgName, req.file.buffer, req.file.mimetype);
+    }
+
     const product = new Product({
       uid: uid(),
       name,
       department,
       isContainer,
-      image: req.file?.filename,
+      image: imgName,
       description,
     });
 
@@ -205,17 +254,9 @@ export const deleteImg = async (req: Request, res: Response) => {
 
     if (!product) return res.status(400).json("Product doesn't exist");
 
-    fs.readdir("./uploads", (_err, files) => {
-      files.forEach((file) => {
-        if (file === product.image) {
-          fs.unlink(`./uploads/${file}`, async function () {
-            product.image = "";
-
-            await product.save();
-          });
-        }
-      });
-    });
+    if (product.image) {
+      await deleteImgS3(product.image);
+    }
 
     return res.status(200).json("Image has been successfully removed");
   } catch (error) {
@@ -322,7 +363,9 @@ export const remove = async (req: Request, res: Response) => {
 
     if (!product) return res.status(404).json("Product is not found");
 
-    if (product.image) fs.unlinkSync(`./uploads/${product.image}`);
+    if (product.image) {
+      await deleteImgS3(product.image);
+    }
 
     if (product.isContainer) {
       await Product.updateMany(

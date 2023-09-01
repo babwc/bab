@@ -8,6 +8,7 @@ export interface IProduct {
   parent: mongoose.Types.ObjectId;
   modifiers: mongoose.Types.ObjectId[] | undefined;
   image: string | null;
+  imageUrl?: string;
   inStock: boolean;
   amount: number;
   price: number;

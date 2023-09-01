@@ -43,7 +43,7 @@ export const ProductContainer = () => {
 
   if (productDataLoading) return <Loading />;
 
-  const { _id, name, image, description, department, price, inStock } =
+  const { _id, name, imageUrl, description, department, price, inStock } =
     productData || {};
 
   return productData ? (
@@ -59,7 +59,7 @@ export const ProductContainer = () => {
           >
             <BsInfoCircleFill size={35} color="#008000" />
           </div>
-          <img src={`/uploads/${image}`} alt={name} />
+          <img src={imageUrl} alt={name} />
         </div>
         <div className="product__sidebar">
           <div className={`product__body ${!inStock ? "full" : ""}`}>
@@ -83,7 +83,7 @@ export const ProductContainer = () => {
               <ProductFooterCart
                 id={_id!}
                 name={name!}
-                image={image!}
+                image={imageUrl!}
                 department={department!}
                 price={price!}
                 quantity={currentQuantity}

@@ -141,11 +141,9 @@ const calculateOrderAmount = async (items: Item[]) => {
 
   const total = products.reduce((acc, _product): number => {
     const item = items.find((_item) => _item.id === _product._id.toString());
-    console.log("item inside", item);
 
     return item ? (acc += _product.price! * item.quantity) : 0;
   }, 0);
-  console.log("total", total);
 
   return Number((total * 100).toFixed());
 };

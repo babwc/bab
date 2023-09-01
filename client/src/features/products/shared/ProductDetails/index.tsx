@@ -27,7 +27,7 @@ const ProductDetails = ({
 }) => {
   const navigate = useNavigate();
 
-  const { _id: id, uid, name, image, department, isContainer } = product;
+  const { _id: id, uid, name, imageUrl, department, isContainer } = product;
 
   const { modifyCartData } = useCartData();
 
@@ -49,7 +49,7 @@ const ProductDetails = ({
         }`}
       >
         <div className="product-details__img">
-          {image ? <img src={`/uploads/${image}`} alt={name} /> : null}
+          {imageUrl ? <img src={imageUrl} alt={name} /> : null}
         </div>
       </div>
       <div className="product-details__footer">
@@ -68,7 +68,7 @@ const ProductDetails = ({
                       : storage.addToCart({
                           id,
                           data: {
-                            image,
+                            image: imageUrl,
                             name,
                             department,
                             price: String((product as IProduct).price),

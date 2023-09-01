@@ -32,10 +32,7 @@ const CartDetails = ({ product }: { product: CartProduct }) => {
           <MdDelete size={25} color={"#b30000"} />
         </div>
         <div className="cart__product__image">
-          <img
-            src={`${process.env.REACT_APP_URL}/uploads/${image}`}
-            alt={name}
-          />
+          <img src={image} alt={name} />
         </div>
         <div className="cart__product__body">
           <div className="cart__product__name">

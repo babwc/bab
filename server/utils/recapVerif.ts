@@ -9,7 +9,6 @@ export const recapValidate = async (token: string) => {
   );
 
   const data: any = await response.json();
-  console.log(data);
 
   return data.success;
 };

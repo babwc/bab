@@ -12,7 +12,12 @@ const OrderDescrDetails = ({
   return (
     <div className="order-descr-details">
       <div className="order-descr-details__image">
-        <img src={`${process.env.REACT_APP_URL}/uploads/${image}`} alt={name} />
+        {image ? (
+          <img
+            src={`${process.env.REACT_APP_URL}/uploads/${image}`}
+            alt={name}
+          />
+        ) : null}
       </div>
       <div className="order-descr-details__data">
         <div className="order-descr-details__header">

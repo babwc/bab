@@ -2,12 +2,14 @@ import path from "path";
 
 import multer from "multer";
 
-export const storage = multer.diskStorage({
-  destination: "./uploads",
-  filename: (_, file, cb) => {
-    cb(null, `${Date.now()}.${file.originalname.split(".")[1]}`);
-  },
-});
+// export const storage = multer.diskStorage({
+//   destination: "./uploads",
+//   filename: (_, file, cb) => {
+//     cb(null, `${Date.now()}.${file.originalname.split(".")[1]}`);
+//   },
+// });
+
+export const storage = multer.memoryStorage();
 
 export const checkFileType = (file: any, cb: any) => {
   const fileTypes = /jpeg|jpg|png|gif|svg/;

@@ -28,6 +28,7 @@ export interface IContainer {
   department: string;
   description: string;
   image: string;
+  imageUrl: string;
   isContainer: boolean;
   name: string;
   modifiers?: IProduct[] | IModifier[];
