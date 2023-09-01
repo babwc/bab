@@ -1,0 +1,32 @@
+@import "../../../sass/variables";
+
+.main-header__auth {
+  position: relative;
+  margin: $header-nav-margin;
+  display: flex;
+  align-items: center;
+  h4 {
+    cursor: pointer;
+  }
+}
+
+.main-header__auth__logo {
+  display: none;
+}
+
+.main-header__auth__wrap {
+  display: flex;
+  align-items: center;
+}
+
+// MEDIA //
+
+@media screen and (max-width: 670px) {
+  .main-header__auth__logo {
+    display: block;
+  }
+
+  .main-header__auth__name {
+    display: none;
+  }
+}

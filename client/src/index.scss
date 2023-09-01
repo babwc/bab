@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap");
+
+@import "./sass/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+body {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+html,
+body,
+#root,
+main {
+  height: 100%;
+}
+
+input,
+textarea,
+span,
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+li {
+  // font-family: "Lato", sans-serif;
+  font-family: "Ubuntu", sans-serif;
+}
+
+input,
+textarea {
+  font-size: 15px;
+  appearance: "none";
+  -webkit-appearance: none;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.backdrop {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10001;
+}
+
+.grecaptcha-badge {
+  z-index: 10000;
+  bottom: 0 !important;
+}

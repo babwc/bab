@@ -1,0 +1,57 @@
+.date-time-picker {
+  height: 525px;
+  width: 100%;
+  background-color: #333;
+}
+
+.date-time-picker__body {
+  display: flex;
+  height: calc(100% - 140px);
+}
+
+.date-time-picker__time {
+  margin-right: 5px;
+}
+
+.date-time-picker__day,
+.date-time-picker__time {
+  height: 100%;
+  width: 50%;
+  ul {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 35px;
+      color: #fff;
+      list-style-type: none;
+      cursor: pointer;
+      user-select: none;
+      &:hover {
+        background-color: #404040;
+      }
+      &.date-unavailable {
+        color: #666;
+        cursor: not-allowed;
+      }
+      &.date-chosen {
+        background-color: #666;
+      }
+    }
+  }
+}
+
+.date-time-picker__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70px;
+  button {
+    margin: 0 10px;
+  }
+}

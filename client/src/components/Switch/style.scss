@@ -1,0 +1,42 @@
+.switch {
+  display: flex;
+  align-items: center;
+
+  h4 {
+    margin-right: 5px;
+    text-transform: capitalize;
+  }
+}
+
+.switch__box {
+  height: 25px;
+  width: 50px;
+  background-color: #ccc;
+  position: relative;
+  border-radius: 25px;
+  position: relative;
+  transition: 300ms;
+  cursor: pointer;
+  &.on {
+    background-color: #008000;
+    .switch__ball {
+      transform: translate(25px, -50%);
+    }
+  }
+  &.blocked {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.switch__ball {
+  position: relative;
+  background-color: #fff;
+  height: 20px;
+  width: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 3px;
+  border-radius: 50%;
+  transition: 300ms;
+}

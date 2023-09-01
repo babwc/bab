@@ -1,0 +1,16 @@
+.order-date {
+  // height: 40px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 101;
+}
+
+.order-date__title {
+  height: 100%;
+  width: 100%;
+}
+
+.order-date__pickup {
+  color: #666;
+  display: inline;
+}

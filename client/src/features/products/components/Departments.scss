@@ -1,0 +1,110 @@
+.departments {
+  width: 100%;
+  display: flex;
+  border-radius: 5px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.departments__takeout {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #990000;
+  width: 250px;
+  margin-right: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+  user-select: none;
+  h4 {
+    color: #fff;
+  }
+  &.chosen {
+    background-color: #660000;
+  }
+}
+
+.departments__market {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+  &.open {
+    .departments__list {
+      height: 350px;
+    }
+  }
+  h4 {
+    text-transform: capitalize;
+  }
+}
+
+.departments__market__caret {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  transition: 300ms ease-in-out;
+  &.open {
+    transform: translateY(-50%) rotate(180deg);
+  }
+}
+
+.departments__list {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  background-color: #fff;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+}
+
+.departments__details {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  &:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  &:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  &.chosen {
+    background-color: #d9d9d9;
+  }
+  h4 {
+    text-transform: capitalize;
+  }
+}
+
+@media screen and (max-width: 1300px) {
+  .departments__market {
+    display: flex;
+  }
+
+  .departments__list {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    top: calc(100% + 10px);
+    z-index: 1000;
+    flex-direction: column;
+    transition: 300ms ease-in-out;
+    &.open {
+      opacity: 1;
+      height: 350px !important;
+    }
+  }
+}

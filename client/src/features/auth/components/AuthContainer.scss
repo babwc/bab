@@ -1,0 +1,68 @@
+.auth {
+  height: 100%;
+  position: relative;
+  .grecaptcha-badge {
+    bottom: 100px !important;
+  }
+}
+
+.auth-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  background-color: #595959;
+}
+
+.auth-container__wrap {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-container__header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+}
+
+.auth-container__header__option {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  h4 {
+    color: #b3b3b3;
+  }
+  &.chosen {
+    h4 {
+      color: #fff;
+    }
+  }
+}
+
+.auth-container__forms {
+  box-sizing: border-box;
+  display: flex;
+  transition: 300ms ease;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+  label {
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+.register {
+  transform: translate(-100%);
+}
+
+@media screen and (max-width: 500px) {
+  .auth-container {
+    width: 80%;
+  }
+}

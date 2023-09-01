@@ -1,0 +1,13 @@
+.catering-dishes__add {
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+  box-sizing: border-box;
+}
+
+.catering-dishes__add__btn {
+  position: absolute;
+  top: 0;
+  left: calc(100% - 30px);
+  cursor: pointer;
+}

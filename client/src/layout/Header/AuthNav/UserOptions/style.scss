@@ -1,0 +1,21 @@
+.user-options__select {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.user-options__option {
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 10px 15px;
+
+  &:hover {
+    background-color: #666;
+  }
+}

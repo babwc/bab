@@ -1,0 +1,155 @@
+.intro {
+  height: calc(100vh - 100px);
+  min-height: 550px;
+  width: 100%;
+  background-attachment: fixed;
+  background-image: url("../../../../assets/images/intro-dark.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+@keyframes intro-text-appear {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+  }
+  100% {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+.intro__content {
+  width: 100%;
+  position: absolute;
+  top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.intro__label {
+  text-align: center;
+  width: 90%;
+  h1 {
+    color: #fff;
+    font-size: 50px;
+    opacity: 0;
+    animation-name: intro-text-appear;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+    animation-delay: 300ms;
+    span {
+      color: #990000;
+    }
+  }
+}
+
+.intro__matreshka {
+  height: 300px;
+  width: 300px;
+  padding-top: 50px;
+  svg {
+    height: 100% !important;
+  }
+}
+
+.intro__matreshka__parts {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  // background-color: green;
+  svg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-55%);
+  }
+}
+
+.matresh-top {
+  transform: translateX(1325px) translateY(20px) rotate(39deg);
+  animation-name: matresh-open;
+  animation-duration: 400ms;
+  animation-fill-mode: forwards;
+  animation-delay: 300ms;
+}
+
+.matresh-spoon {
+  transform: translateY(870px);
+  animation-name: matresh-spoon;
+  animation-duration: 400ms;
+  animation-delay: 600ms;
+  animation-fill-mode: forwards;
+}
+
+.matresh-fork {
+  transform: translateY(640px) translateX(-350px);
+  animation-name: matresh-fork;
+  animation-duration: 400ms;
+  animation-delay: 900ms;
+  animation-fill-mode: forwards;
+}
+
+.matresh-knife {
+  transform: translateY(570px) translateX(-430px);
+  animation-name: matresh-knife;
+  animation-duration: 400ms;
+  animation-delay: 1200ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes matresh-open {
+  0% {
+    transform: translateX(1325px) translateY(20px) rotate(39deg);
+  }
+  100% {
+    transform: translate(0) rotate(0);
+  }
+}
+
+@keyframes matresh-spoon {
+  0% {
+    transform: translateY(870px);
+  }
+  60% {
+    transform: translate(0) scale(1.05);
+    transform-origin: right bottom;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    transform-origin: right bottom;
+  }
+}
+
+@keyframes matresh-fork {
+  0% {
+    transform: translateY(640px) translateX(-350px);
+  }
+  60% {
+    transform: translate(0) scale(1.05);
+    transform-origin: right bottom;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    transform-origin: right bottom;
+  }
+}
+
+@keyframes matresh-knife {
+  0% {
+    transform: translateY(570px) translateX(-430px);
+  }
+  60% {
+    transform: translate(0) scale(1.05);
+    transform-origin: right bottom;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    transform-origin: right bottom;
+  }
+}

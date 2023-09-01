@@ -1,0 +1,20 @@
+.contact {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact__info {
+  display: flex;
+  width: 90%;
+  margin: 0 auto;
+}
+
+/// MEDIA ///
+
+@media screen and (max-width: 850px) {
+  .contact__info {
+    flex-direction: column-reverse;
+  }
+}

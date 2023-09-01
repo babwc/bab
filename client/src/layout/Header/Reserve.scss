@@ -1,0 +1,24 @@
+@import "../../sass/variables";
+
+.reserve {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: $header-nav-margin;
+}
+
+.reserve__popup {
+  height: 300px;
+  width: 220px;
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translate(-50%);
+  transition: 300ms;
+  opacity: 0;
+  pointer-events: none;
+  &.open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}

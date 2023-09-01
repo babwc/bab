@@ -1,0 +1,138 @@
+.product {
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.product__img {
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  img {
+    max-height: 100%;
+    max-width: 100%;
+  }
+}
+
+.product__name--mobile {
+  display: none;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.product__descr__icon--mobile {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+
+.product__name {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product__sidebar {
+  width: 35%;
+  position: relative;
+  overflow: hidden;
+  margin-left: 10px;
+  padding: 10px 0;
+  box-sizing: border-box;
+}
+
+.product__body {
+  height: calc(100% - 140px);
+  padding: 0 10px;
+  &.full {
+    height: 100%;
+  }
+}
+
+.product__descr {
+  height: calc(100% - 60px);
+  width: 100%;
+  position: relative;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+  p {
+    line-height: 22px;
+  }
+}
+
+.product__amount {
+  height: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  h4 {
+    margin: 0;
+  }
+}
+
+.product__instock {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.product__footer {
+  height: 150px;
+  width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .product__sidebar {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .product__sidebar {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .product__img {
+    height: calc(100% - 70px - 200px);
+    width: 100%;
+  }
+  .product__name--mobile {
+    display: flex;
+  }
+  .product {
+    flex-direction: column;
+  }
+  .product__name {
+    display: none;
+  }
+  .product__body {
+    display: none;
+  }
+
+  .product__sidebar {
+    height: 170px;
+    width: 100%;
+    margin: 0;
+  }
+
+  .product__descr__icon--mobile {
+    display: block;
+    right: 10px;
+  }
+}

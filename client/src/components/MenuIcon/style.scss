@@ -1,0 +1,25 @@
+.menu-icon {
+  color: #fff;
+  span {
+    height: 3px;
+    width: 27px;
+    background-color: #fff;
+    margin: 5px 0;
+    display: block;
+    border-radius: 2px;
+    transition: 300ms;
+  }
+  &.open {
+    span {
+      &:first-child {
+        transform: translate(0, 8px) rotate(-45deg);
+      }
+      &:nth-child(2) {
+        transform: rotate(223deg);
+      }
+      &:last-child {
+        transform: translate(0, -8px) rotate(45deg);
+      }
+    }
+  }
+}

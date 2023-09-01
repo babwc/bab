@@ -1,0 +1,21 @@
+.catering-dishes__title__wrap {
+  min-height: 70px;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 400ms ease;
+  list-style: none;
+}
+
+.catering-dishes__title {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+}

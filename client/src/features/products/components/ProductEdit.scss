@@ -1,0 +1,13 @@
+.product-edit__image {
+  position: relative;
+  height: 25px;
+  margin-bottom: 30px;
+}
+
+.product-edit__image__display {
+  height: 100%;
+  position: absolute;
+  top: 100%;
+  left: 30px;
+  z-index: 99;
+}

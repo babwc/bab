@@ -1,0 +1,54 @@
+.catering__descr__intro {
+  padding: 0 120px;
+  box-sizing: border-box;
+  width: 50%;
+}
+
+// .catering__descr__intro {
+//   margin-top: 30px;
+// }
+
+.catering__descr__intro__header {
+  margin: 15px 0;
+  h1 {
+    margin: 0;
+    font-size: 30px;
+    animation-name: catering-descr-text-header;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+  }
+}
+
+.catering__descr__intro__body {
+  p {
+    margin: 10px 0;
+    font-size: 20px;
+    line-height: 30px;
+    opacity: 0;
+    animation-name: catering-descr-text-body;
+    animation-duration: 1000ms;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes catering-descr-text-header {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes catering-descr-text-body {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

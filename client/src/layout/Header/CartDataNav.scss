@@ -1,0 +1,18 @@
+@import "../../sass/mixins";
+@import "../../sass/variables";
+
+.cart-nav {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  order: 2;
+  &__amount {
+    @include header-children-count;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .cart-nav {
+    margin: $header-nav-margin !important;
+  }
+}

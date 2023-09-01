@@ -1,0 +1,43 @@
+.contact__options {
+  width: 100%;
+  padding: 15px 0;
+  ul {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 0;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      list-style-type: none;
+      img {
+        height: 100px;
+      }
+      h1 {
+        color: #990000;
+      }
+      h4 {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.contact__options__hours {
+  margin-bottom: 15px;
+}
+
+.contact__options__title {
+  padding: 10px 0;
+}
+
+.contact__options__value {
+  h4 {
+    color: #666;
+  }
+}

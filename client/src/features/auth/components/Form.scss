@@ -1,0 +1,22 @@
+.auth-form {
+  min-height: 200px;
+  min-width: 100%;
+  border-right: 1px solid green;
+  background-color: #595959;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 15px;
+  form {
+    width: 100%;
+  }
+}
+
+.auth-form__footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}

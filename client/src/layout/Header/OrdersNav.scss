@@ -1,0 +1,35 @@
+@import "../../sass/mixins";
+@import "../../sass/variables";
+
+.orders-nav {
+  display: flex;
+  align-items: center;
+  margin: 0 5px;
+  &__amount {
+    @include header-children-count;
+  }
+
+  span {
+    cursor: pointer;
+  }
+
+  img {
+    display: none;
+    height: 25px;
+  }
+}
+
+// MEDIA //
+
+@media screen and (max-width: 1000px) {
+  .orders-nav {
+    order: 1;
+    span {
+      display: none;
+    }
+
+    img {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.page {
+  min-height: calc(100% - 200px);
+  position: relative;
+  padding: 10px 0;
+  box-sizing: border-box;
+  &.narrow {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &.fixed-height {
+    height: calc(100% - 200px);
+  }
+  &.no-padding {
+    padding: 0;
+  }
+}

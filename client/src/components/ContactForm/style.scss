@@ -1,0 +1,15 @@
+.contact__form {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .input {
+    width: 100%;
+  }
+}
+
+.contact__form__header {
+  padding: 10px 0;
+}

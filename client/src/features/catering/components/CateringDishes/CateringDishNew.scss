@@ -1,0 +1,12 @@
+.catering-ctg {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  .input {
+    width: 100%;
+    input {
+      cursor: pointer;
+      text-transform: capitalize;
+    }
+  }
+}

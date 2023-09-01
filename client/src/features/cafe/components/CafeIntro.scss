@@ -1,0 +1,96 @@
+.cafe {
+  display: flex;
+  height: 100%;
+  background-color: red;
+}
+
+.cafe-intro {
+  height: 100%;
+  width: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  &:first-child {
+    background-image: url("../../../assets/images/cafe.jpg");
+  }
+  &:last-child {
+    background-image: url("../../../assets/images/banquet.jpg");
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.cafe-intro__body {
+  height: 100%;
+  background-color: rgba($color: #000, $alpha: 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 300ms;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba($color: #000, $alpha: 0.4);
+  }
+  &:hover > h1 {
+    transform: scale(1.3);
+  }
+  &:hover > h1:after {
+    width: 100%;
+  }
+  h1 {
+    color: #fff;
+    transition: 300ms;
+    font-size: 30px;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      transition: 300ms;
+      bottom: -10px;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+  }
+}
+
+.cafe-intro__btn {
+  padding: 10px 0;
+  width: 150px;
+  display: none;
+  justify-content: center;
+  background-color: rgba($color: #666, $alpha: 0.5) !important;
+  border-radius: 5px;
+}
+
+// MEDIA //
+
+@media screen and (max-width: 800px) {
+  .cafe {
+    justify-content: space-between;
+    background-color: #333;
+  }
+
+  .cafe-intro {
+    width: calc(50% - 1px);
+  }
+
+  .cafe-intro__label {
+    display: none;
+  }
+
+  .cafe-intro__btn {
+    display: flex;
+  }
+
+  .cafe-intro__body {
+    background-color: rgba($color: #000, $alpha: 0.5) !important;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+      rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  }
+}

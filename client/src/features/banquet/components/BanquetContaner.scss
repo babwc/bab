@@ -1,0 +1,49 @@
+.banquet {
+  background-color: #333;
+}
+
+.banquet__title {
+  color: #fff;
+  padding-top: 25px;
+  text-align: center;
+}
+
+.banquet__header {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banquet__price {
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+
+.banquet__indicator {
+  position: absolute;
+  transition: 300ms;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 5px;
+  //   transform: translate(50%);
+}
+
+.banquet__option {
+  padding: 0 10px;
+  color: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.banquet__body {
+  box-sizing: border-box;
+  width: 90%;
+  margin: 0 auto;
+}

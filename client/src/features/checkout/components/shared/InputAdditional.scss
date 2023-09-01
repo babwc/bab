@@ -1,0 +1,21 @@
+.payment-additional {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 9px;
+  &.error {
+    input {
+      border: 2px solid #df1b41;
+    }
+  }
+  label {
+    height: 17.11px;
+    margin-bottom: 5px;
+    color: #30313d;
+  }
+  input {
+    border-radius: 5px;
+    padding: 9px;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.03), 0px 3px 6px rgba(0, 0, 0, 0.02);
+  }
+}

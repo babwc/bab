@@ -1,0 +1,50 @@
+// duplicate wuth CateringDishesDetails.scss
+
+.order__description {
+  height: 650px;
+  width: 1000px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  z-index: 1111111111111;
+}
+
+.order__description__close {
+  position: absolute;
+  top: 10px;
+  right: -35px;
+}
+
+.order__description__items {
+  height: calc(100% - 70px);
+  overflow-y: auto;
+}
+
+.order__description__total {
+  height: 70px;
+  width: 100%;
+  background-color: #333;
+  border-top: 1px solid rgba($color: #fff, $alpha: 0.1);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h2 {
+    color: #fff;
+  }
+}
+
+/// MEDIA ///
+
+@media screen and (max-width: 1100px) {
+  .order__description {
+    width: 80%;
+  }
+}

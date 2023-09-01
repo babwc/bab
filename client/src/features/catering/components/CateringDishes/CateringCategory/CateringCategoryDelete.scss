@@ -1,0 +1,10 @@
+.catering-ctg__list__delete {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  &.filled-category {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
