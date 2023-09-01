@@ -53,6 +53,8 @@ export const all = async (req: TypedRequestParams<GetAll>, res: Response) => {
 
     return res.status(200).json({ products, total });
   } catch (error) {
+    console.log(error);
+
     return res.status(500).json("Something went wrong");
   }
 };
