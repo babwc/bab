@@ -1,5 +1,4 @@
 import { useState, ReactNode } from "react";
-import { v4 as uuid } from "uuid";
 
 import AppearAnim from "../AppearAnim";
 
@@ -65,10 +64,10 @@ const Select = <T,>({
         >
           {options.list.length ? (
             <ul className="select__options__list">
-              {options.list.map((option: any) => {
+              {options.list.map((option: any, index: number) => {
                 return (
                   <li
-                    key={uuid()}
+                    key={index}
                     onClick={
                       isStatic
                         ? undefined

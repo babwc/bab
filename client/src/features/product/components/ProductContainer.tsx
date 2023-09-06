@@ -45,6 +45,7 @@ export const ProductContainer = () => {
 
   const { _id, name, imageUrl, description, department, price, inStock } =
     productData || {};
+  console.log(imageUrl);
 
   return productData ? (
     <>

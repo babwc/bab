@@ -1,7 +1,5 @@
 import { Dispatch, SetStateAction, useMemo } from "react";
 
-import { v4 as uuid } from "uuid";
-
 import { getTimeList } from "./utils/getTimeList";
 
 const TimeList = ({
@@ -23,10 +21,10 @@ const TimeList = ({
   return (
     <div className="date-time-picker__time">
       <ul>
-        {timeList.map((time) => {
+        {timeList.map(({ id, time }) => {
           return (
             <li
-              key={uuid()}
+              key={id}
               className={`${timeState === time ? "date-chosen" : ""}`}
               onClick={() => setTime(time)}
             >

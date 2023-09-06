@@ -1,5 +1,6 @@
 require("dotenv").config();
 import { Request, Response } from "express";
+import { Types } from "mongoose";
 
 import Stripe from "stripe";
 
@@ -8,8 +9,9 @@ import Product from "../model/Product";
 import Order from "../model/Order";
 
 import { sendEmail } from "../utils/email";
+import { getImgUrl } from "../utils/s3";
+
 import { TypedRequestParams, TypedRequestBody } from "../ts/interfaces";
-import { Types } from "mongoose";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2022-11-15",
@@ -75,10 +77,25 @@ export const getAll = async (
     if (limit && currentPage) {
       orders = await Order.find(params)
         .limit(limit)
-        .skip((currentPage - 1) * limit);
+        .skip((currentPage - 1) * limit)
+        .lean();
     } else {
-      orders = await Order.find(params);
+      orders = await Order.find(params).lean();
     }
+
+    for (const order of orders) {
+      for (const item of order.items) {
+        const image = item.product.image;
+
+        if (image) {
+          const imageUrl = await getImgUrl(image);
+
+          item.product.imageUrl = imageUrl;
+        }
+      }
+    }
+
+    // console.log((orders as any)[0].items);
 
     return res.status(200).json({ orders, total });
   } catch (error) {

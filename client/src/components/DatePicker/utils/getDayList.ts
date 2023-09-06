@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 export const getDaysInMonth = (
   month: number,
   year: number,
@@ -12,8 +14,9 @@ export const getDaysInMonth = (
 
   while (Number(date.getMonth()) === month) {
     if (date.getTime() > now.getTime()) {
-      days.push(new Date(date));
+      days.push({ id: uuid(), day: new Date(date) });
     }
+
     date.setDate(date.getDate() + 1);
   }
 

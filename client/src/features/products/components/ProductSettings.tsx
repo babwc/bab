@@ -3,8 +3,6 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
 import { IoMdSettings } from "react-icons/io";
-import { MdEdit, MdDelete } from "react-icons/md";
-import { RxCross2 } from "react-icons/rx";
 
 import { useDeleteProductMutation } from "../../../api/services/products";
 
@@ -13,6 +11,10 @@ import ConfirmPopup from "../../../components/ConfirmPopup";
 import AppearAnim from "../../../components/AppearAnim";
 
 import usePopup from "../../../hooks/usePopup";
+
+import IconDelete from "../../../assets/icons/delete.svg";
+import IconDissolve from "../../../assets/icons/cross.svg";
+import IconEdit from "../../../assets/icons/edit.svg";
 
 import "./ProductSettings.scss";
 
@@ -48,7 +50,7 @@ const ProductSettings = ({
               handleToggle();
             }}
           >
-            <MdEdit size={20} color={"#b3b300"} />
+            <img src={IconEdit} alt="Edit" />
             <span>Edit</span>
           </div>
           <div
@@ -60,12 +62,12 @@ const ProductSettings = ({
           >
             {isContainer ? (
               <>
-                <RxCross2 size={20} color={"#b30000"} />
+                <img src={IconDissolve} alt="Dissolve" />
                 <span>Dissolve</span>
               </>
             ) : (
               <>
-                <MdDelete size={20} color={"#b30000"} />
+                <img src={IconDelete} alt="Delete" />
                 <span>Delete</span>
               </>
             )}

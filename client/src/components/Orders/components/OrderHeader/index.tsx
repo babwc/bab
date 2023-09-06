@@ -1,8 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "../../../../api/store";
 
-import { v4 as uuid } from "uuid";
-
 import { useTypedSelector } from "../../../../api/store";
 
 import { selectOrderStatus, setOrderStatus } from "../../orderSlice";
@@ -31,10 +29,13 @@ const OrderHeader = () => {
       <div className="order__status">
         <ul>
           {statusList.map(
-            ({ label, type }: { label: string; type: Order_Status }) => {
+            (
+              { label, type }: { label: string; type: Order_Status },
+              index: number
+            ) => {
               return (
                 <li
-                  key={uuid()}
+                  key={index}
                   className={type === orderStatus ? "selected" : ""}
                   onClick={() => dispatch(setOrderStatus(type))}
                 >

@@ -2,22 +2,19 @@ import "./OrderDescrDetails.scss";
 
 import { IProductInOrder } from "../../../ts/interfaces";
 
+import GenericSvg from "../../../assets/icons/generic.svg";
+
 const OrderDescrDetails = ({
   item: { product, quantity },
 }: {
   item: { product: IProductInOrder; quantity: number };
 }) => {
-  const { name, department, image, price } = product;
+  const { name, department, imageUrl, price } = product;
 
   return (
     <div className="order-descr-details">
       <div className="order-descr-details__image">
-        {image ? (
-          <img
-            src={`${process.env.REACT_APP_URL}/uploads/${image}`}
-            alt={name}
-          />
-        ) : null}
+        <img src={imageUrl || GenericSvg} alt={name} />
       </div>
       <div className="order-descr-details__data">
         <div className="order-descr-details__header">

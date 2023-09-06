@@ -1,7 +1,11 @@
 import { Request, Response } from "express";
 import { validationResult } from "express-validator";
 
+import crypto from "crypto";
+
 import ShortUniqueId from "short-unique-id";
+
+import { addImage, getImgUrl, deleteImgS3 } from "../utils/s3";
 
 import Catering from "../model/Catering";
 
@@ -13,9 +17,17 @@ export const some = async (req: Request, res: Response) => {
   const { category } = req.query;
 
   try {
-    const catering = await Catering.find({ category }).select(
-      "-category -__v -updatedAt -createdAt"
-    );
+    const catering = await Catering.find({ category })
+      .select("-category -__v -updatedAt -createdAt")
+      .lean();
+
+    for (const dish of catering) {
+      if (dish.image) {
+        const imageUrl = await getImgUrl(dish.image);
+
+        dish.imageUrl = imageUrl;
+      }
+    }
 
     return res.status(200).json(catering);
   } catch (error) {
@@ -29,11 +41,17 @@ export const add = async (req: Request, res: Response) => {
   try {
     const uid = new ShortUniqueId({ length: 10 });
 
+    const imgName = crypto.randomBytes(32).toString("hex");
+
+    if (req.file) {
+      await addImage(imgName, req.file.buffer, req.file.mimetype);
+    }
+
     const newCateringDish = new Catering({
       id: uid(),
       name,
       category,
-      image: req.file?.filename,
+      image: imgName,
       description,
     });
 
@@ -42,6 +60,27 @@ export const add = async (req: Request, res: Response) => {
     newCateringDish.category = category._id;
 
     return res.status(201).json("Catering dish has been successfully created");
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json("Something went wrong");
+  }
+};
+
+export const remove = async (req: Request, res: Response) => {
+  const { uid } = req.body;
+  console.log(uid);
+
+  try {
+    const catering = await Catering.findOneAndDelete({ uid });
+
+    if (!catering) return res.status(404).json("Catering dish is not found");
+
+    if (catering.image) {
+      await deleteImgS3(catering.image);
+    }
+
+    return res.status(201).json("Catering dish has been deleted");
   } catch (error) {
     console.log(error);
 
@@ -83,15 +122,15 @@ export const send = async (req: Request, res: Response) => {
           <span style="color: #fff;">${phone}</span>
         </div>
         <div style="padding: 10px 0;padding-left: 10px;">
-          <h4 style="display: inline;color: #d9d9d9;">Phone:</h4>
+          <h4 style="display: inline;color: #d9d9d9;">Guests:</h4>
           <span style="color: #fff;">${guests}</span>
         </div>
         <div style="padding: 10px 0;padding-left: 10px;">
-          <h4 style="display: inline;color: #d9d9d9;">Phone:</h4>
+          <h4 style="display: inline;color: #d9d9d9;">Location:</h4>
           <span style="color: #fff;">${location}</span>
         </div>
         <div style="padding: 10px 0;padding-left: 10px;">
-          <h4 style="display: inline;color: #d9d9d9;">Phone:</h4>
+          <h4 style="display: inline;color: #d9d9d9;">Date:</h4>
           <span style="color: #fff;">${date}</span>
         </div>
         ${

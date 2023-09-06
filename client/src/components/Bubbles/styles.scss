@@ -31,8 +31,7 @@
   isolation: isolate;
   transition: 500ms ease;
   border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
-    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  background-color: rgba(0, 0, 0, 0.6);
   cursor: pointer;
   img {
     height: 100%;
@@ -45,10 +44,13 @@
 .bubbles_details__title {
   width: 100%;
   position: absolute;
-  bottom: 50px;
+  top: calc(50% - 10px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%);
   z-index: 101;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 0;
+  box-sizing: border-box;
   h1 {
     color: #fff;
     font-size: 30px;

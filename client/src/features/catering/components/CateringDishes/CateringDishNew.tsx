@@ -17,7 +17,7 @@ import { ICateringNew } from "../../../../ts/interfaces";
 const initialValue: ICateringNew = {
   name: "",
   category: "",
-  price: "",
+  // price: "",
   description: "",
   image: "",
 };
@@ -88,14 +88,14 @@ const CateringDishNew = ({ closeModal }: { closeModal: RegularFunction }) => {
         value={value.name}
         error={error.name}
       />
-      <Input
+      {/* <Input
         label={"Price"}
         name={"price"}
         handleChange={handleChange}
         handleFocus={handleFocus}
         value={value.price}
         error={error.price}
-      />
+      /> */}
       <div ref={ref} className="catering-ctg">
         <Input
           label={"Category"}

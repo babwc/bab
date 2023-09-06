@@ -37,11 +37,11 @@ export const login = async (req: Request, res: Response) => {
   const { name, password, recapToken } = req.body;
 
   try {
-    const recapValid = await recapValidate(recapToken);
+    // const recapValid = await recapValidate(recapToken);
 
-    if (!recapValid) {
-      return res.status(404).json("Validation failed");
-    }
+    // if (!recapValid) {
+    //   return res.status(404).json("Validation failed");
+    // }
 
     const errors = validationResult(req);
 

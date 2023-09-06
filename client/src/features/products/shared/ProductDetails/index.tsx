@@ -27,7 +27,15 @@ const ProductDetails = ({
 }) => {
   const navigate = useNavigate();
 
-  const { _id: id, uid, name, imageUrl, department, isContainer } = product;
+  const {
+    _id: id,
+    uid,
+    name,
+    image,
+    imageUrl,
+    department,
+    isContainer,
+  } = product;
 
   const { modifyCartData } = useCartData();
 
@@ -68,7 +76,7 @@ const ProductDetails = ({
                       : storage.addToCart({
                           id,
                           data: {
-                            image: imageUrl,
+                            image,
                             name,
                             department,
                             price: String((product as IProduct).price),

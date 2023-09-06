@@ -3,7 +3,7 @@ import multer from "multer";
 
 import { check } from "express-validator";
 
-import { add, send, some } from "../controllers/catering";
+import { add, remove, send, some } from "../controllers/catering";
 
 import { storage, checkFileType } from "../utils/multer";
 
@@ -20,6 +20,8 @@ const upload = multer({
 });
 
 router.post("/new", checkAuth, isAdmin, upload.single("image"), add);
+router.delete("/delete", checkAuth, isAdmin, remove);
+
 router.get("/some", some);
 router.post(
   "/send",

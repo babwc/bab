@@ -19,7 +19,7 @@ const nextMonths = (amount: number) => {
 
     now.setMonth(now.getMonth() + (num - 1), 1);
 
-    return now;
+    return { id: uuid(), date: now };
   });
 };
 
@@ -63,16 +63,18 @@ const DateHeader = ({
             exit={{ opacity: 0 }}
           >
             <ul>
-              {nextMonths(monthsAvailable).map((monthNumber: Date) => {
-                return (
-                  <li
-                    key={uuid()}
-                    onClick={() => setMonth(String(monthNumber.getMonth()))}
-                  >
-                    {getMonths(monthNumber)}
-                  </li>
-                );
-              })}
+              {nextMonths(monthsAvailable).map(
+                ({ id, date }: { id: string; date: Date }) => {
+                  return (
+                    <li
+                      key={id}
+                      onClick={() => setMonth(String(date.getMonth()))}
+                    >
+                      {getMonths(date)}
+                    </li>
+                  );
+                }
+              )}
             </ul>
           </motion.div>
         )}

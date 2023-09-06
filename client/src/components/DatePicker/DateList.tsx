@@ -1,7 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
 
-import { v4 as uuid } from "uuid";
-
 import { getDaysInMonth } from "./utils/getDayList";
 
 const DateList = ({
@@ -22,7 +20,9 @@ const DateList = ({
           Number(month),
           new Date().getFullYear(),
           dayInterval
-        ).map((dayElem: Date) => {
+        ).map(({ id, day: dayElem }: { id: string; day: Date }) => {
+          console.log(dayElem);
+
           const currentDay = dayElem.getDate();
           const dayOfWeek = dayElem.toLocaleString("en-us", {
             weekday: "long",
@@ -32,7 +32,7 @@ const DateList = ({
 
           return (
             <li
-              key={uuid()}
+              key={id}
               className={`${!isAvailable ? "date-unavailable" : ""} ${
                 day === String(currentDay) ? "date-chosen" : ""
               }`}

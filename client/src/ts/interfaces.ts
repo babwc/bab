@@ -53,7 +53,7 @@ export type ResponseMessage = string;
 export interface ICateringNew {
   name: string;
   category: string;
-  price: string;
+  price?: string;
   description: string;
   image: string;
 }
@@ -87,6 +87,7 @@ export interface IProductInOrder {
   department: string;
   id: string;
   image: string;
+  imageUrl?: string;
   name: string;
   price: string;
 }
@@ -138,8 +139,10 @@ export interface IChangePass {
 }
 
 export interface IDish {
+  uid: string;
   _id: string;
   image: string;
+  imageUrl?: string;
   name: string;
   description: string;
 }

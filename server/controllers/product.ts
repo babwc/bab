@@ -365,10 +365,6 @@ export const remove = async (req: Request, res: Response) => {
 
     if (!product) return res.status(404).json("Product is not found");
 
-    if (product.image) {
-      await deleteImgS3(product.image);
-    }
-
     if (product.isContainer) {
       await Product.updateMany(
         {
@@ -388,6 +384,10 @@ export const remove = async (req: Request, res: Response) => {
     }
 
     await product.remove();
+
+    if (product.image) {
+      await deleteImgS3(product.image);
+    }
 
     return res.status(200).json("Product has been successfully deleted");
   } catch (error) {

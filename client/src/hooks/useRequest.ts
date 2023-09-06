@@ -20,11 +20,13 @@ const useRequest = () => {
     try {
       const response = await axios({
         method,
-        url: `/${url}`,
+        url: `http://localhost:5552/${url}`,
         data: body,
       });
 
       setData(response);
+
+      return response;
     } catch (err) {
       setError((err as AxiosError).response?.data);
     }

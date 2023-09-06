@@ -10,6 +10,7 @@ interface IProductInOrder {
   department: string;
   id: string;
   image: string;
+  imageUrl?: string;
   name: string;
   price: string;
 }

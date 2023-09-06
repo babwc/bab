@@ -1,8 +1,6 @@
 import { useState, useEffect, Dispatch, SetStateAction } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import { v4 as uuid } from "uuid";
-
 import "./style.scss";
 
 interface Props {
@@ -33,10 +31,10 @@ const Pagination = ({ total, limit, currentPage, setCurrentPage }: Props) => {
 
   const displayPages = (pageLength: number) => {
     return Array.from({ length: pageLength }, (_, i) => i + startFrom).map(
-      (page: number) => {
+      (page: number, index: number) => {
         return (
           <div
-            key={uuid()}
+            key={index}
             className={`pagination__page ${
               currentPage === page ? "current" : ""
             }`}

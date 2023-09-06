@@ -31,6 +31,16 @@ export const cateringApi = api.injectEndpoints({
       },
       invalidatesTags: ["Catering", "CateringCategory"],
     }),
+    deleteCateringDish: builder.mutation<ResponseMessage, { uid: string }>({
+      query: ({ uid }) => {
+        return {
+          url: "catering/delete",
+          method: "DELETE",
+          body: { uid },
+        };
+      },
+      invalidatesTags: ["Catering", "CateringCategory"],
+    }),
     sendCateringRequest: builder.mutation<
       ResponseMessage,
       {
@@ -58,5 +68,6 @@ export const cateringApi = api.injectEndpoints({
 export const {
   useGetCateringListQuery,
   useAddCateringDishMutation,
+  useDeleteCateringDishMutation,
   useSendCateringRequestMutation,
 } = cateringApi;

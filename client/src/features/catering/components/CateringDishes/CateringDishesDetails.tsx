@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 
+import CateringDishDelete from "./CateringDishDelete";
+import Protected from "../../../../components/Protected";
 import DescrPopup from "../../../../components/DescrPopup";
 
 import usePopup from "../../../../hooks/usePopup";
@@ -19,24 +21,27 @@ const CateringDishesDetails = ({
 }) => {
   const { popupOpen, handleToggle, refExeption } = usePopup();
 
-  const { _id, image, name, description } = dish;
+  const { uid, imageUrl, name, description } = dish;
 
   return (
     <>
       <motion.div
-        key={_id}
+        key={uid}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 * index }}
         className="catering-dishes__details"
         style={{
-          backgroundImage: `url(/uploads/${image})`,
+          backgroundImage: `url(${imageUrl})`,
         }}
       >
         <div className="catering-dishes__details__content">
           <div className="catering-dishes__name">
             <h1>{name}</h1>
           </div>
+          <Protected requiredRoles={["admin"]}>
+            <CateringDishDelete dishId={uid} />
+          </Protected>
           <div
             ref={refExeption}
             className="catering-dishes__info"

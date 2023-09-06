@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 export const getTimeList = (from: number, to: number) => {
   const start = new Date();
   const end = new Date();
@@ -8,9 +10,13 @@ export const getTimeList = (from: number, to: number) => {
   const timeList = [];
 
   while (start <= end) {
-    timeList.push(
-      start.toLocaleString("en-US", { hour: "2-digit", minute: "2-digit" })
-    );
+    timeList.push({
+      id: uuid(),
+      time: start.toLocaleString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
+    });
 
     start.setMinutes(start.getMinutes() + 30);
   }
