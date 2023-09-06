@@ -25,8 +25,8 @@ dotenv.config();
 const app: Express = express();
 // const __dirname = path.resolve();
 app.use(bodyParser.json());
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
-app.use(cors({ origin: "*" }));
+// app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+// app.use(cors({ origin: "*" }));
 app.use(express.json());
 app.use(cookieParser());
 
@@ -46,10 +46,10 @@ app.use("/catering", catering);
 
 runTasks();
 
-// app.use(express.static(path.join(__dirname, "../client/build")));
-// app.get("*", (_req, res) =>
-//   res.sendFile(path.join(__dirname, "../client/build/index.html"))
-// );
+app.use(express.static(path.join(__dirname, "../client/build")));
+app.get("*", (_req, res) =>
+  res.sendFile(path.join(__dirname, "../client/build/index.html"))
+);
 
 app.listen(port, () => {
   console.log(`⚡️[server]: Server is running at ${port}`);

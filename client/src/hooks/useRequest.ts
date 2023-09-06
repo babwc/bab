@@ -20,7 +20,8 @@ const useRequest = () => {
     try {
       const response = await axios({
         method,
-        url: `http://localhost:5552/${url}`,
+        // url: `http://localhost:5552/${url}`,
+        url: `/${url}`,
         data: body,
       });
 
